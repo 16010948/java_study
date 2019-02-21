@@ -2,18 +2,18 @@ package project;
 
 import java.util.*;
 
-class _BankApplication{
+class BankApplication{
 	private String ano,ana;
 	int aas;
 	Scanner sc=new Scanner(System.in);
 	
-	public _BankApplication() {}
-	public _BankApplication(String ano,String ana,int aas) {
+	public BankApplication() {}
+	public BankApplication(String ano,String ana,int aas) {
 		this.ano=ano;
 		this.ana=ana;
 		this.aas=aas;
 	}
-	void accountProduction(ArrayList<_BankApplication> list) {
+	void accountProduction(ArrayList<BankApplication> list) {
 		String ano,ana;
 		int aas;
 		
@@ -23,22 +23,22 @@ class _BankApplication{
 		ana=sc.next();
 		System.out.print("초기 입금액: ");
 		aas=sc.nextInt();
-		list.add(new _BankApplication(ano,ana,aas));
+		list.add(new BankApplication(ano,ana,aas));
 		System.out.println("결과: 계좌가 생성되었습니다.");
 	}
 	
-	void accountList(ArrayList<_BankApplication> list) {
-		for (_BankApplication s:list) {
+	void accountList(ArrayList<BankApplication> list) {
+		for (BankApplication s:list) {
 			System.out.println(s.ano+"\t"+s.ana+"\t"+s.aas);
 		}
 	}
 	
-	void deposit(ArrayList<_BankApplication> list) {
+	void deposit(ArrayList<BankApplication> list) {
 		System.out.print("계좌번호: ");
 		String ano=sc.next();
 		System.out.print("예금액: ");
 		int aas=sc.nextInt();
-		for (_BankApplication s:list) {
+		for (BankApplication s:list) {
 			if(s.ano.equals(ano)) {
 				s.aas=s.aas+aas;
 				System.out.println("결과: 예금이 성공되었습니다.");
@@ -46,32 +46,29 @@ class _BankApplication{
 		}
 	}
 	
-	void withdrawal(ArrayList<_BankApplication> list)throws AccountErrorException {
+	void withdrawal(ArrayList<BankApplication> list) {
 		System.out.print("계좌번호: ");
 		String ano=sc.next();
 		System.out.print("출금액: ");
 		int aas=sc.nextInt();
-		for (_BankApplication s:list) {
+		for (BankApplication s:list) {
 			if(s.ano.equals(ano)) {
-				if(s.aas<aas) throw new AccountErrorException();
-				else{
-					s.aas=s.aas-aas; 				
-					System.out.println("결과: 출금이 성공되었습니다.");
-				}
+				s.aas=s.aas-aas; 
+				System.out.println("결과: 출금이 성공되었습니다.");
 			}
 				
 		}
 	}
 	
 }
-class AccountErrorException extends Exception {}
 
-public class Q3_0219 {
+
+public class Hw1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		_BankApplication bank= new _BankApplication();
-		ArrayList<_BankApplication> list = new ArrayList<_BankApplication>();
+		BankApplication bank= new BankApplication();
+		ArrayList<BankApplication> list = new ArrayList<BankApplication>();
 		Scanner sc=new Scanner(System.in);
 		int number;
 		Boolean flag=true;
@@ -105,13 +102,7 @@ public class Q3_0219 {
 				System.out.println("------");
 				System.out.println("출금");
 				System.out.println("------");
-				try{
-					bank.withdrawal(list);
-				}catch(Exception e) {
-					e.printStackTrace();
-					System.out.println();
-					System.out.println();
-				}
+				bank.withdrawal(list);
 				break;
 			case 5:
 				System.out.println("프로그램 종료");
@@ -122,4 +113,3 @@ public class Q3_0219 {
 	}
 
 }
-
