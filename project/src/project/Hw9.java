@@ -2,6 +2,7 @@ package project;
 
 import java.util.*;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class Hw9 {
 
@@ -9,7 +10,7 @@ public class Hw9 {
 		// TODO Auto-generated method stub
 		Calendar cal=Calendar.getInstance();
 		LocalDateTime now=LocalDateTime.now();
-		//Formatter f=new Formatter();
+		//DateTimeFormatter f=DateTimeFormatter("yyyy-MM-dd");
 		//System.out.println(f.format("%d-%d-%d %d:%d",now.getYear(),now.getMonth(),now.getDayOfMonth(),now.getHour(),now.getMinute()));
 		System.out.println(now);
 		int hour=cal.get(Calendar.HOUR_OF_DAY);
